@@ -35,10 +35,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         uiCSeleccion = new javax.swing.JComboBox<>();
-        uiBMenuAdministrador = new javax.swing.JButton();
+        uiBFinalizarComprar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         uiBMenuAdministrador1 = new javax.swing.JButton();
         uiTNombre = new javax.swing.JTextField();
@@ -49,9 +50,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         uiTADireccion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        uiCcantidad = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        uiTNombre1 = new javax.swing.JTextField();
+        uiTNumeroTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -59,10 +60,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         jLabel12 = new javax.swing.JLabel();
-        uiTNombre2 = new javax.swing.JTextField();
+        uiTCorreo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        uiCFacturaNo = new javax.swing.JRadioButton();
+        uiCFacturaSi = new javax.swing.JRadioButton();
+        uiCSeleccion1 = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         jLabel6.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
@@ -81,12 +84,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         uiCSeleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clásica", "Jamón y Hongos", "Pepperoni", "Suprema", "Triple Queso", "Vegetariana" }));
 
-        uiBMenuAdministrador.setBackground(new java.awt.Color(255, 215, 0));
-        uiBMenuAdministrador.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
-        uiBMenuAdministrador.setText("Finalizar Compra");
-        uiBMenuAdministrador.addActionListener(new java.awt.event.ActionListener() {
+        uiBFinalizarComprar.setBackground(new java.awt.Color(255, 215, 0));
+        uiBFinalizarComprar.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
+        uiBFinalizarComprar.setText("Finalizar Compra");
+        uiBFinalizarComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uiBMenuAdministradorActionPerformed(evt);
+                uiBFinalizarComprarActionPerformed(evt);
             }
         });
 
@@ -121,7 +124,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Sabor de la Pizza:");
+        jLabel4.setText("Tamaño: ");
 
         uiTADireccion.setColumns(20);
         uiTADireccion.setRows(5);
@@ -135,15 +138,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cantidad:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
+        uiCcantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
 
         jLabel9.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Numero Telefónico:");
 
-        uiTNombre1.addActionListener(new java.awt.event.ActionListener() {
+        uiTNumeroTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uiTNombre1ActionPerformed(evt);
+                uiTNumeroTelefonoActionPerformed(evt);
             }
         });
 
@@ -180,9 +183,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Correo Electrónico:");
 
-        uiTNombre2.addActionListener(new java.awt.event.ActionListener() {
+        uiTCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uiTNombre2ActionPerformed(evt);
+                uiTCorreoActionPerformed(evt);
             }
         });
 
@@ -190,21 +193,34 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Factura Electrónica:");
 
-        jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton5.setText("No");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(uiCFacturaNo);
+        uiCFacturaNo.setForeground(new java.awt.Color(255, 255, 255));
+        uiCFacturaNo.setText("No");
+        uiCFacturaNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
+                uiCFacturaNoActionPerformed(evt);
             }
         });
 
-        jRadioButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton6.setText("Sí");
-        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(uiCFacturaSi);
+        uiCFacturaSi.setForeground(new java.awt.Color(255, 255, 255));
+        uiCFacturaSi.setText("Sí");
+        uiCFacturaSi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton6ActionPerformed(evt);
+                uiCFacturaSiActionPerformed(evt);
             }
         });
+
+        uiCSeleccion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal ₡2500", "Pequeña ₡4000", "Mediana ₡6000", "Grande ₡8000", "Extragrande ₡10000", " " }));
+        uiCSeleccion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uiCSeleccion1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Sabor de la Pizza:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -230,47 +246,59 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(uiTNombre1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(uiTNumeroTelefono, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(uiTNombre, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(uiTCedula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(uiTNombre2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(uiTCorreo, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jRadioButton6)
+                                .addComponent(uiCFacturaSi)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton5))))
+                                .addComponent(uiCFacturaNo)))
+                        .addContainerGap(116, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
+                        .addComponent(jLabel5)
+                        .addGap(83, 83, 83)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(uiCSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jRadioButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton1)))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                                .addComponent(jRadioButton3))
+                            .addComponent(uiCSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(uiCSeleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jRadioButton4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(uiCcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(uiBMenuAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(uiBFinalizarComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(281, 281, 281))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(559, Short.MAX_VALUE)
                     .addComponent(uiBMenuAdministrador1)
                     .addGap(20, 20, 20)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(jLabel14)
+                    .addContainerGap(587, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,24 +321,26 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(uiTNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(uiTNumeroTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12)
                         .addGap(6, 6, 6))
-                    .addComponent(uiTNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(uiTCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton6))
+                    .addComponent(uiCFacturaNo)
+                    .addComponent(uiCFacturaSi))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(uiCSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(uiCcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(uiCSeleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
@@ -318,20 +348,26 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)
                             .addComponent(jRadioButton4)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(uiBMenuAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(uiBFinalizarComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(21, 21, 21)
                     .addComponent(uiBMenuAdministrador1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(615, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(447, Short.MAX_VALUE)
+                    .addComponent(jLabel14)
+                    .addGap(238, 238, 238)))
         );
 
         jTabbedPane1.addTab("Orden", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -360,9 +396,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void uiBMenuAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministradorActionPerformed
+    private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uiBMenuAdministradorActionPerformed
+    }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
 
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
        MenuAdministrador m = new MenuAdministrador();
@@ -378,9 +414,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_uiTCedulaActionPerformed
 
-    private void uiTNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiTNombre1ActionPerformed
+    private void uiTNumeroTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiTNumeroTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uiTNombre1ActionPerformed
+    }//GEN-LAST:event_uiTNumeroTelefonoActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -390,17 +426,21 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void uiTNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiTNombre2ActionPerformed
+    private void uiTCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiTCorreoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uiTNombre2ActionPerformed
+    }//GEN-LAST:event_uiTCorreoActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+    private void uiCFacturaNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCFacturaNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    }//GEN-LAST:event_uiCFacturaNoActionPerformed
 
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+    private void uiCFacturaSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCFacturaSiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton6ActionPerformed
+    }//GEN-LAST:event_uiCFacturaSiActionPerformed
+
+    private void uiCSeleccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCSeleccion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uiCSeleccion1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,12 +478,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -457,17 +498,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton uiBMenuAdministrador;
+    private javax.swing.JButton uiBFinalizarComprar;
     private javax.swing.JButton uiBMenuAdministrador1;
+    private javax.swing.JRadioButton uiCFacturaNo;
+    private javax.swing.JRadioButton uiCFacturaSi;
     private javax.swing.JComboBox<String> uiCSeleccion;
+    private javax.swing.JComboBox<String> uiCSeleccion1;
+    private javax.swing.JComboBox<String> uiCcantidad;
     private javax.swing.JTextArea uiTADireccion;
     private javax.swing.JTextField uiTCedula;
+    private javax.swing.JTextField uiTCorreo;
     private javax.swing.JTextField uiTNombre;
-    private javax.swing.JTextField uiTNombre1;
-    private javax.swing.JTextField uiTNombre2;
+    private javax.swing.JTextField uiTNumeroTelefono;
     // End of variables declaration//GEN-END:variables
 }
