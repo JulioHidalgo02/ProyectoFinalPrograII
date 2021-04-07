@@ -406,11 +406,12 @@ private int total = 0;
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-       uiTAFactura.append("Nombre: " + uiTNombre.getText() +  "\n");
+       uiTAFactura.append("Detalle de Compra: \nNombre: " + uiTNombre.getText() +  "\n");
        if(uiCTamaño.getSelectedItem().equals("Personal")){
            total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
            uiTAFactura.append("Total: " + total +  "\n");
        }
+       uiTAFactura.append("---------------------------------------------------------------------------\n");
        
     }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
 
