@@ -1,21 +1,13 @@
 
 import javax.swing.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author WPC
- */
 public class PaginaPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PaginaPrincipal
-     */
+private int pizzaPersonal = 2500;
+private int pizzaPequeña = 4000;
+private int pizzaMediana = 6000;
+private int pizzaGrande = 8000;
+private int pizzaExtraGrande = 10000;
+private int total = 0;
     public PaginaPrincipal() {
         initComponents();
         
@@ -50,7 +42,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         uiTADireccion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        uiCcantidad = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         uiTNumeroTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -64,9 +55,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         uiCFacturaNo = new javax.swing.JRadioButton();
         uiCFacturaSi = new javax.swing.JRadioButton();
-        uiCSeleccion1 = new javax.swing.JComboBox<>();
+        uiCTamaño = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
+        uiTCantidad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        uiTAFactura = new javax.swing.JTextArea();
 
         jLabel6.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,6 +77,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         uiCSeleccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Clásica", "Jamón y Hongos", "Pepperoni", "Suprema", "Triple Queso", "Vegetariana" }));
+        uiCSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uiCSeleccionActionPerformed(evt);
+            }
+        });
 
         uiBFinalizarComprar.setBackground(new java.awt.Color(255, 215, 0));
         uiBFinalizarComprar.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
@@ -137,8 +136,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cantidad:");
-
-        uiCcantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
 
         jLabel9.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,10 +208,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        uiCSeleccion1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal ₡2500", "Pequeña ₡4000", "Mediana ₡6000", "Grande ₡8000", "Extragrande ₡10000", " " }));
-        uiCSeleccion1.addActionListener(new java.awt.event.ActionListener() {
+        uiCTamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Personal", "Pequeña", "Mediana", "Grande", "Extragrande", " " }));
+        uiCTamaño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uiCSeleccion1ActionPerformed(evt);
+                uiCTamañoActionPerformed(evt);
             }
         });
 
@@ -272,7 +269,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(uiCSeleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(uiCTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jRadioButton4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,8 +280,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(uiCcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(69, 69, 69))))))
+                                .addComponent(uiTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(uiBFinalizarComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,9 +335,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(uiCSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(uiCcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(uiCSeleccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(uiCTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(uiTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
@@ -369,15 +366,27 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
+        uiTAFactura.setColumns(20);
+        uiTAFactura.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        uiTAFactura.setRows(5);
+        uiTAFactura.setText("Detalle de compra:\n");
+        jScrollPane2.setViewportView(uiTAFactura);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 751, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 667, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Factura", jPanel2);
@@ -397,7 +406,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-        // TODO add your handling code here:
+       uiTAFactura.append("Nombre: " + uiTNombre.getText() +  "\n");
+       if(uiCTamaño.getSelectedItem().equals("Personal")){
+           total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
+           uiTAFactura.append("Total: " + total +  "\n");
+       }
+       
     }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
 
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
@@ -438,9 +452,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_uiCFacturaSiActionPerformed
 
-    private void uiCSeleccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCSeleccion1ActionPerformed
+    private void uiCTamañoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCTamañoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uiCSeleccion1ActionPerformed
+    }//GEN-LAST:event_uiCTamañoActionPerformed
+
+    private void uiCSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiCSeleccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_uiCSeleccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,15 +517,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton uiBFinalizarComprar;
     private javax.swing.JButton uiBMenuAdministrador1;
     private javax.swing.JRadioButton uiCFacturaNo;
     private javax.swing.JRadioButton uiCFacturaSi;
     private javax.swing.JComboBox<String> uiCSeleccion;
-    private javax.swing.JComboBox<String> uiCSeleccion1;
-    private javax.swing.JComboBox<String> uiCcantidad;
+    private javax.swing.JComboBox<String> uiCTamaño;
     private javax.swing.JTextArea uiTADireccion;
+    private javax.swing.JTextArea uiTAFactura;
+    private javax.swing.JTextField uiTCantidad;
     private javax.swing.JTextField uiTCedula;
     private javax.swing.JTextField uiTCorreo;
     private javax.swing.JTextField uiTNombre;
