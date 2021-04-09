@@ -329,7 +329,6 @@ private int total = 0;
                     .addComponent(jLabel13)
                     .addComponent(uiCFacturaNo)
                     .addComponent(uiCFacturaSi))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -347,7 +346,7 @@ private int total = 0;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(uiBFinalizarComprar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +368,6 @@ private int total = 0;
         uiTAFactura.setColumns(20);
         uiTAFactura.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         uiTAFactura.setRows(5);
-        uiTAFactura.setText("Detalle de compra:\n");
         jScrollPane2.setViewportView(uiTAFactura);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -406,15 +404,42 @@ private int total = 0;
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-       uiTAFactura.append("Detalle de Compra: \nNombre: " + uiTNombre.getText() +  "\n");
+       uiTAFactura.append("Detalle de Compra: \nNombre:" + uiTNombre.getText() +"\n"+"celular: "+uiTNumeroTelefono.getText()+"\n"+"tamañopizza: "+uiCTamaño.getItemAt(WIDTH)+
+            "\n");
        if(uiCTamaño.getSelectedItem().equals("Personal")){
+           
            total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
            uiTAFactura.append("Total: " + total +  "\n");
+     
+       } else if(uiCTamaño.getSelectedItem().equals("Pequeña")){
+       total = pizzaPequeña * Integer.parseInt(uiTCantidad.getText());
+           uiTAFactura.append("Total: " + total +  "\n");{
+         
        }
-       uiTAFactura.append("---------------------------------------------------------------------------\n");
+       }else if(uiCTamaño.getSelectedItem().equals("Mediana")){
+        total = pizzaMediana * Integer.parseInt(uiTCantidad.getText());
+           uiTAFactura.append("Total: " + total +  "\n");{
+                   
+       }
+       }else if(uiCTamaño.getSelectedItem().equals("Grande")){
+        total = pizzaGrande * Integer.parseInt(uiTCantidad.getText());
+           uiTAFactura.append("ha elegido la orden de pizza grande Total: " + total +  "\n");{
+           
+            }
+       }else if(uiCTamaño.getSelectedItem().equals("ExtraGrande")){
+        total = pizzaExtraGrande * Integer.parseInt(uiTCantidad.getText());
+           uiTAFactura.append("ha elegido la orden de pizza extragrande Total: " + total +  "\n");{
+           
+           
+           
+           
+           
+           uiTAFactura.append("---------------------------------------------------------------------------\n");
        
+    
+       }
     }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
-
+    }
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
        MenuAdministrador m = new MenuAdministrador();
        m.setVisible(true);
