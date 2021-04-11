@@ -8,7 +8,14 @@ private int pizzaMediana = 6000;
 private int pizzaGrande = 8000;
 private int pizzaExtraGrande = 10000;
 private int total = 0;
-    public PaginaPrincipal() {
+   private String Clasica;
+private String jamonhongos;
+private String peperoni;
+ private String suprema;
+ private String triplequeso;
+  private String vegetariana;
+        private String tipo;                       
+public PaginaPrincipal() {
         initComponents();
         
        
@@ -61,6 +68,7 @@ private int total = 0;
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         uiTAFactura = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel6.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,7 +80,7 @@ private int total = 0;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 0));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -253,7 +261,7 @@ private int total = 0;
                                 .addComponent(uiCFacturaSi)
                                 .addGap(18, 18, 18)
                                 .addComponent(uiCFacturaNo)))
-                        .addContainerGap(116, Short.MAX_VALUE))
+                        .addContainerGap(143, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jLabel5)
@@ -288,14 +296,14 @@ private int total = 0;
                 .addGap(281, 281, 281))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(559, Short.MAX_VALUE)
+                    .addContainerGap(611, Short.MAX_VALUE)
                     .addComponent(uiBMenuAdministrador1)
                     .addGap(20, 20, 20)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(44, 44, 44)
                     .addComponent(jLabel14)
-                    .addContainerGap(587, Short.MAX_VALUE)))
+                    .addContainerGap(614, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,21 +378,27 @@ private int total = 0;
         uiTAFactura.setRows(5);
         jScrollPane2.setViewportView(uiTAFactura);
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Factura", jPanel2);
@@ -404,40 +418,101 @@ private int total = 0;
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-       uiTAFactura.append("Detalle de Compra: \nNombre:" + uiTNombre.getText() +"\n"+"celular: "+uiTNumeroTelefono.getText()+"\n"+"tamañopizza: "+uiCTamaño.getItemAt(WIDTH)+
-            "\n");
-       if(uiCTamaño.getSelectedItem().equals("Personal")){
+       uiTAFactura.append("                    PIZZA FIDE \nDetalle de Compra: \nNombre:" + uiTNombre.getText() +"\n"+"celular: "+uiTNumeroTelefono.getText()+"\n");
+      
+  if(uiCSeleccion.getSelectedItem().equals("Clásica")){
+         
+               uiTAFactura.append("saborpizza:Clásica \n"); 
+        }
+      else if(uiCSeleccion.getSelectedItem().equals("Jamón y Hongos")){
+         
+               uiTAFactura.append("saborpizza:Jamón y Hongos \n"); 
+      }
+        else if(uiCSeleccion.getSelectedItem().equals("Pepperoni")){
+         
+               uiTAFactura.append("saborpizza:Pepperoni \n"); 
+        }
+          else if(uiCSeleccion.getSelectedItem().equals("Suprema")){
+         
+               uiTAFactura.append("saborpizza:Suprema \n"); 
+        } 
+          else if(uiCSeleccion.getSelectedItem().equals("Triple Queso")){
+         
+               uiTAFactura.append("saborpizza:Triple Queso \n"); 
+        
+               
+               } 
+          else if(uiCSeleccion.getSelectedItem().equals("Vegetariana")){
+         
+               uiTAFactura.append("saborpizza:Vegetariana \n"); 
+               
+               
+          } 
+  
+  if(jRadioButton2.isSelected()){
+  String Hongos = jRadioButton2.getText();
+    uiTAFactura.append("adicionales:hongos \n");
+  
+  
+  
+  }
+  
+     
+      else if(jRadioButton3.isSelected()){
+        String  Jamón= jRadioButton3.getText();
+          uiTAFactura.append("adicionales:Jamón \n");
+              
+  
+  
+      }
+   else if(jRadioButton4.isSelected()){
+         String Pepperoni = jRadioButton4.getText();
+       uiTAFactura.append("adicionales:Pepperoni \n");
+              
+  
+  
+      }
+               
+  else if(jRadioButton1.isSelected()){
+         String Queso = jRadioButton1.getText();
+       uiTAFactura.append("adicionales:Queso \n");
+              
+  
+  
+      }
+               if(uiCTamaño.getSelectedItem().equals("Personal")){
            
            total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("Total: " + total +  "\n");
-     
+           uiTAFactura.append("pizzatamaño:personal \n Total: " + total +  "\n");
+      uiTAFactura.append("---------------------------------------------------------------------------\n");
        } else if(uiCTamaño.getSelectedItem().equals("Pequeña")){
        total = pizzaPequeña * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("Total: " + total +  "\n");{
-         
+           uiTAFactura.append("pizzatamaño:Pequeña \n Total: " + total +  "\n");{
+          uiTAFactura.append("---------------------------------------------------------------------------\n");
        }
        }else if(uiCTamaño.getSelectedItem().equals("Mediana")){
         total = pizzaMediana * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("Total: " + total +  "\n");{
-                   
+           uiTAFactura.append("pizzatamaño:Mediana \n Total: " + total +  "\n");{
+                    uiTAFactura.append("---------------------------------------------------------------------------\n");
        }
        }else if(uiCTamaño.getSelectedItem().equals("Grande")){
         total = pizzaGrande * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("ha elegido la orden de pizza grande Total: " + total +  "\n");{
-           
+           uiTAFactura.append("pizzatamaño:Grande \nTotal: " + total +  "\n");{
+            uiTAFactura.append("---------------------------------------------------------------------------\n");
             }
        }else if(uiCTamaño.getSelectedItem().equals("ExtraGrande")){
         total = pizzaExtraGrande * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("ha elegido la orden de pizza extragrande Total: " + total +  "\n");{
-           
-           
-           
-           
-           
-           uiTAFactura.append("---------------------------------------------------------------------------\n");
+           uiTAFactura.append("pizzatamaño:ExtraGrande \n Total: " + total +  "\n");{
+        uiTAFactura.append("---------------------------------------------------------------------------\n");
        
-    
+       
+       
        }
+      
+           
+           
+       
+       
     }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
     }
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
@@ -529,6 +604,7 @@ private int total = 0;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
