@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author WPC
- */
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.LinkedList;
+import javax.swing.JFileChooser;
+
+
 public class MenuAdministradorReportes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuAdministradorReportes
-     */
     public MenuAdministradorReportes() {
         initComponents();
     }
@@ -28,6 +26,10 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        uiBGuardar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        uiTReportes = new javax.swing.JTextArea();
+        uiBCargar = new javax.swing.JButton();
 
         setTitle("Menu Administrador Reportes");
 
@@ -38,21 +40,60 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Reporte de Ventas");
 
+        uiBGuardar.setBackground(new java.awt.Color(255, 215, 0));
+        uiBGuardar.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
+        uiBGuardar.setText("Guardar Ordenes");
+        uiBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uiBGuardarActionPerformed(evt);
+            }
+        });
+
+        uiTReportes.setColumns(20);
+        uiTReportes.setRows(5);
+        jScrollPane1.setViewportView(uiTReportes);
+
+        uiBCargar.setBackground(new java.awt.Color(255, 215, 0));
+        uiBCargar.setFont(new java.awt.Font("Myanmar Text", 1, 12)); // NOI18N
+        uiBCargar.setText("Cargar Ordenes");
+        uiBCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uiBCargarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(275, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(271, 271, 271))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(99, 99, 99)
+                        .addComponent(uiBGuardar)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(uiBCargar)
+                        .addGap(319, 319, 319))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addContainerGap(492, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(uiBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(uiBCargar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -68,6 +109,49 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void uiBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBGuardarActionPerformed
+       PaginaPrincipal p = new PaginaPrincipal();
+         JFileChooser WinGuardar = new JFileChooser();
+        int decisión = WinGuardar.showSaveDialog(null);
+        if (decisión == JFileChooser.APPROVE_OPTION) {
+            try {
+                File archivo = WinGuardar.getSelectedFile();
+                FileOutputStream fos = new FileOutputStream(archivo);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+                oos.writeObject(p.ordenes);
+                oos.close();
+            } catch (IOException e) {
+                System.err.println(e);
+            }
+        }
+    }//GEN-LAST:event_uiBGuardarActionPerformed
+
+    private void uiBCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBCargarActionPerformed
+        JFileChooser WinCargar = new JFileChooser();
+        int decisión = WinCargar.showSaveDialog(null);
+        if (decisión == JFileChooser.APPROVE_OPTION) {
+            try {
+                File archivo = WinCargar.getSelectedFile();
+                FileInputStream fos = new FileInputStream(archivo);
+                ObjectInputStream oos = new ObjectInputStream(fos);
+                LinkedList<Orden> cargar = (LinkedList<Orden>) oos.readObject();
+                oos.close();
+                String datos = "";
+                int cantidad = cargar.size();
+                for (Orden ventas : cargar) {
+                   
+                  datos= datos + ventas.toString() + "\n";
+                 
+                     
+                }
+                uiTReportes.append(datos);
+            } catch (IOException | ClassNotFoundException e) {
+                System.err.println(e);
+            }
+        }
+    }//GEN-LAST:event_uiBCargarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,5 +191,9 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton uiBCargar;
+    private javax.swing.JButton uiBGuardar;
+    private javax.swing.JTextArea uiTReportes;
     // End of variables declaration//GEN-END:variables
 }

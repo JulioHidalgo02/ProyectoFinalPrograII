@@ -1,27 +1,34 @@
 
+import java.util.LinkedList;
 import javax.swing.*;
 
 public class PaginaPrincipal extends javax.swing.JFrame {
-private int pizzaPersonal = 2500;
-private int pizzaPequeña = 4000;
-private int pizzaMediana = 6000;
-private int pizzaGrande = 8000;
-private int pizzaExtraGrande = 10000;
-private int total = 0;
-   private String Clasica;
-private String jamonhongos;
-private String peperoni;
- private String suprema;
- private String triplequeso;
-  private String vegetariana;
-        private String tipo;                       
-public PaginaPrincipal() {
-        initComponents();
-        
-       
-        
-    }
+    public LinkedList<Orden> ordenes = new LinkedList();
+    private int pizzaPersonal = 2500;
+    private int pizzaPequeña = 4000;
+    private int pizzaMediana = 6000;
+    private int pizzaGrande = 8000;
+    private int pizzaExtraGrande = 10000;
+    private int total = 0;
+    private String Clasica;
+    private String jamonhongos;
+    private String peperoni;
+    private String suprema;
+    private String triplequeso;
+    private String vegetariana;
+    //************************* Atributos para Clase orden
+    private String nombre = "";
+    private String cedula = "";
+    private String correo= "";
+    private String sabor = "";
+    private String tamaño = "";
+    private int cantidad = 0;
+    private String tipo = "";
 
+    public PaginaPrincipal() {
+        initComponents();
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +51,6 @@ public PaginaPrincipal() {
         uiTNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         uiTCedula = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         uiTADireccion = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
@@ -65,6 +71,7 @@ public PaginaPrincipal() {
         uiCTamaño = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         uiTCantidad = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         uiTAFactura = new javax.swing.JTextArea();
@@ -128,10 +135,6 @@ public PaginaPrincipal() {
                 uiTCedulaActionPerformed(evt);
             }
         });
-
-        jLabel4.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Tamaño: ");
 
         uiTADireccion.setColumns(20);
         uiTADireccion.setRows(5);
@@ -227,6 +230,10 @@ public PaginaPrincipal() {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Sabor de la Pizza:");
 
+        jLabel15.setFont(new java.awt.Font("Myanmar Text", 3, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Tamaño: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -242,7 +249,8 @@ public PaginaPrincipal() {
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel9)
-                                    .addComponent(jLabel11)))
+                                    .addComponent(jLabel11))
+                                .addComponent(jLabel14))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -275,7 +283,7 @@ public PaginaPrincipal() {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(uiCTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jRadioButton4))
@@ -299,11 +307,6 @@ public PaginaPrincipal() {
                     .addContainerGap(611, Short.MAX_VALUE)
                     .addComponent(uiBMenuAdministrador1)
                     .addGap(20, 20, 20)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(44, 44, 44)
-                    .addComponent(jLabel14)
-                    .addContainerGap(614, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,8 +346,9 @@ public PaginaPrincipal() {
                             .addComponent(uiCSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(uiCTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(uiTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(uiTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRadioButton1)
@@ -362,11 +366,6 @@ public PaginaPrincipal() {
                     .addGap(21, 21, 21)
                     .addComponent(uiBMenuAdministrador1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(615, Short.MAX_VALUE)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(447, Short.MAX_VALUE)
-                    .addComponent(jLabel14)
-                    .addGap(238, 238, 238)))
         );
 
         jTabbedPane1.addTab("Orden", jPanel1);
@@ -418,107 +417,104 @@ public PaginaPrincipal() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-       uiTAFactura.append("                    PIZZA FIDE \nDetalle de Compra: \nNombre:" + uiTNombre.getText() +"\n"+"celular: "+uiTNumeroTelefono.getText()+"\n");
-      
-  if(uiCSeleccion.getSelectedItem().equals("Clásica")){
-         
-               uiTAFactura.append("saborpizza:Clásica \n"); 
-        }
-      else if(uiCSeleccion.getSelectedItem().equals("Jamón y Hongos")){
-         
-               uiTAFactura.append("saborpizza:Jamón y Hongos \n"); 
-      }
-        else if(uiCSeleccion.getSelectedItem().equals("Pepperoni")){
-         
-               uiTAFactura.append("saborpizza:Pepperoni \n"); 
-        }
-          else if(uiCSeleccion.getSelectedItem().equals("Suprema")){
-         
-               uiTAFactura.append("saborpizza:Suprema \n"); 
-        } 
-          else if(uiCSeleccion.getSelectedItem().equals("Triple Queso")){
-         
-               uiTAFactura.append("saborpizza:Triple Queso \n"); 
+        nombre = uiTNombre.getText();
+        cedula = uiTCedula.getText();
+        correo = uiTCorreo.getText();
         
-               
-               } 
-          else if(uiCSeleccion.getSelectedItem().equals("Vegetariana")){
-         
-               uiTAFactura.append("saborpizza:Vegetariana \n"); 
-               
-               
-          } 
-  
-  if(jRadioButton2.isSelected()){
-  String Hongos = jRadioButton2.getText();
-    uiTAFactura.append("adicionales:hongos \n");
-  
-  
-  
-  }
-  
-     
-      else if(jRadioButton3.isSelected()){
-        String  Jamón= jRadioButton3.getText();
-          uiTAFactura.append("adicionales:Jamón \n");
-              
-  
-  
-      }
-   else if(jRadioButton4.isSelected()){
-         String Pepperoni = jRadioButton4.getText();
-       uiTAFactura.append("adicionales:Pepperoni \n");
-              
-  
-  
-      }
-               
-  else if(jRadioButton1.isSelected()){
-         String Queso = jRadioButton1.getText();
-       uiTAFactura.append("adicionales:Queso \n");
-              
-  
-  
-      }
-               if(uiCTamaño.getSelectedItem().equals("Personal")){
-           
-           total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("pizzatamaño:personal \n Total: " + total +  "\n");
-      uiTAFactura.append("---------------------------------------------------------------------------\n");
-       } else if(uiCTamaño.getSelectedItem().equals("Pequeña")){
-       total = pizzaPequeña * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("pizzatamaño:Pequeña \n Total: " + total +  "\n");{
-          uiTAFactura.append("---------------------------------------------------------------------------\n");
-       }
-       }else if(uiCTamaño.getSelectedItem().equals("Mediana")){
-        total = pizzaMediana * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("pizzatamaño:Mediana \n Total: " + total +  "\n");{
-                    uiTAFactura.append("---------------------------------------------------------------------------\n");
-       }
-       }else if(uiCTamaño.getSelectedItem().equals("Grande")){
-        total = pizzaGrande * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("pizzatamaño:Grande \nTotal: " + total +  "\n");{
+        
+        uiTAFactura.append("                    PIZZA FIDE \nDetalle de Compra: \nNombre:" + uiTNombre.getText() + "\n" + "celular: " + uiTNumeroTelefono.getText() + "\n");
+
+        if (uiCSeleccion.getSelectedItem().equals("Clásica")) {
+            sabor = "Clasica";
+            uiTAFactura.append("Sabor de pizza:Clásica \n");
+        } else if (uiCSeleccion.getSelectedItem().equals("Jamón y Hongos")) {
+            sabor = "Jamón y Hongos";
+            uiTAFactura.append("Sabor de pizza:Jamón y Hongos \n");
+        } else if (uiCSeleccion.getSelectedItem().equals("Pepperoni")) {
+            sabor = "Jamón y Hongos";
+            uiTAFactura.append("Sabor de pizza:Pepperoni \n");
+        } else if (uiCSeleccion.getSelectedItem().equals("Suprema")) {
+            sabor = "Suprema";
+            uiTAFactura.append("Sabor de pizza:Suprema \n");
+        } else if (uiCSeleccion.getSelectedItem().equals("Triple Queso")) {
+            sabor = "Triple Queso";
+            uiTAFactura.append("Sabor de pizza:Triple Queso \n");
+
+        } else if (uiCSeleccion.getSelectedItem().equals("Vegetariana")) {
+            sabor = "Vegetariana";
+            uiTAFactura.append("Sabor de pizza:Vegetariana \n");
+
+        }
+        uiTAFactura.append("Cantidad: " + uiTCantidad.getText() + "\n");
+        cantidad = Integer.parseInt(uiTCantidad.getText());
+        if (jRadioButton2.isSelected()) {
+            String Hongos = jRadioButton2.getText();
+            uiTAFactura.append("Adicionales: Hongos \n");
+
+        } else if (jRadioButton3.isSelected()) {
+            String Jamón = jRadioButton3.getText();
+            uiTAFactura.append("Adicionales: Jamón \n");
+
+        } else if (jRadioButton4.isSelected()) {
+            String Pepperoni = jRadioButton4.getText();
+            uiTAFactura.append("Adicionales: Pepperoni \n");
+
+        } else if (jRadioButton1.isSelected()) {
+            String Queso = jRadioButton1.getText();
+            uiTAFactura.append("Adicionales: Queso \n");
+
+        }
+
+        if (uiCTamaño.getSelectedItem().equals("Personal")) {
+            tamaño = "Personal";
+            total = pizzaPersonal * Integer.parseInt(uiTCantidad.getText());
+            uiTAFactura.append("Tamaño de Pizza:personal \nTotal: ₡" + total + "\n");
             uiTAFactura.append("---------------------------------------------------------------------------\n");
+        } else if (uiCTamaño.getSelectedItem().equals("Pequeña")) {
+            tamaño = "Pequeña";
+            total = pizzaPequeña * Integer.parseInt(uiTCantidad.getText());
+            uiTAFactura.append("Tamaño de Pizza:Pequeña \nTotal: ₡" + total + "\n");
+            {
+                uiTAFactura.append("---------------------------------------------------------------------------\n");
             }
-       }else if(uiCTamaño.getSelectedItem().equals("ExtraGrande")){
-        total = pizzaExtraGrande * Integer.parseInt(uiTCantidad.getText());
-           uiTAFactura.append("pizzatamaño:ExtraGrande \n Total: " + total +  "\n");{
-        uiTAFactura.append("---------------------------------------------------------------------------\n");
-       
-       
-       
-       }
-      
-           
-           
-       
-       
+        } else if (uiCTamaño.getSelectedItem().equals("Mediana")) {
+            tamaño = "Mediana";
+            total = pizzaMediana * Integer.parseInt(uiTCantidad.getText());
+            uiTAFactura.append("Tamaño de Pizza:Mediana \nTotal: ₡" + total + "\n");
+            {
+                uiTAFactura.append("---------------------------------------------------------------------------\n");
+            }
+        } else if (uiCTamaño.getSelectedItem().equals("Grande")) {
+            tamaño = "Grande";
+            total = pizzaGrande * Integer.parseInt(uiTCantidad.getText());
+            uiTAFactura.append("Tamaño de Pizza:Grande \nTotal: ₡" + total + "\n");
+            {
+                uiTAFactura.append("---------------------------------------------------------------------------\n");
+            }
+        } else if (uiCTamaño.getSelectedItem().equals("Extragrande")) {
+            tamaño = "ExtraGrande";
+            total = pizzaExtraGrande * Integer.parseInt(uiTCantidad.getText());
+            uiTAFactura.append("Tamaño de Pizza:ExtraGrande \nTotal: ₡" + total + "\n");
+            {
+                uiTAFactura.append("---------------------------------------------------------------------------\n");
+
+            }
     }//GEN-LAST:event_uiBFinalizarComprarActionPerformed
+    Orden orden = new Orden(nombre, cedula, correo, sabor, tamaño, cantidad, total);
+    ordenes.add(orden);
+    String datos = "";
+    for(Orden p: ordenes){
+       datos = datos + p.toString() + "\n";
+    }
+        System.out.println(datos);
+    
+    
+    
     }
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
-       MenuAdministrador m = new MenuAdministrador();
-       m.setVisible(true);
-       
+        MenuAdministrador m = new MenuAdministrador();
+        m.setVisible(true);
+
     }//GEN-LAST:event_uiBMenuAdministrador1ActionPerformed
 
     private void uiTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiTNombreActionPerformed
@@ -604,9 +600,9 @@ public PaginaPrincipal() {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
