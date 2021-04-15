@@ -18,6 +18,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
      */
     public MenuAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     private void BorrarCampos(){
         uiTUsuario.setText("");

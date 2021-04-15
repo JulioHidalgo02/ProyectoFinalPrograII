@@ -27,6 +27,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     public PaginaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
 
     }
     
@@ -527,7 +528,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     Orden orden = new Orden(nombre, cedula, correo, sabor, tamaño, cantidad, total);
     ordenes.add(orden);
     String datos = "";
-   LimpiarCampos();
+    LimpiarCampos();
     
     
     
