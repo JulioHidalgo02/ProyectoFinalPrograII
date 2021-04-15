@@ -111,7 +111,7 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBGuardarActionPerformed
-       PaginaPrincipal p = new PaginaPrincipal();
+
          JFileChooser WinGuardar = new JFileChooser();
         int decisión = WinGuardar.showSaveDialog(null);
         if (decisión == JFileChooser.APPROVE_OPTION) {
@@ -120,7 +120,7 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
                 FileOutputStream fos = new FileOutputStream(archivo);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-                oos.writeObject(p.ordenes);
+                oos.writeObject(PaginaPrincipal.ordenes);
                 oos.close();
             } catch (IOException e) {
                 System.err.println(e);
@@ -139,13 +139,15 @@ public class MenuAdministradorReportes extends javax.swing.JFrame {
                 LinkedList<Orden> cargar = (LinkedList<Orden>) oos.readObject();
                 oos.close();
                 String datos = "";
+                int totalganado = 0;
                 int cantidad = cargar.size();
                 for (Orden ventas : cargar) {
                    
-                  datos= datos + ventas.toString() + "\n";
-                 
+                  datos= "***********************************************\n" + datos + ventas.toString() + "\n***********************************************\n";
+                  totalganado = totalganado + ventas.monto; 
                      
                 }
+                datos = datos + "\n Total Ganado en el día: ₡" + totalganado;
                 uiTReportes.append(datos);
             } catch (IOException | ClassNotFoundException e) {
                 System.err.println(e);

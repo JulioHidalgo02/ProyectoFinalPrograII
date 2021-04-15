@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import javax.swing.*;
 
 public class PaginaPrincipal extends javax.swing.JFrame {
-    public LinkedList<Orden> ordenes = new LinkedList();
+    public static LinkedList<Orden> ordenes = new LinkedList();
     private int pizzaPersonal = 2500;
     private int pizzaPequeña = 4000;
     private int pizzaMediana = 6000;
@@ -29,6 +29,29 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         initComponents();
 
     }
+    
+      private void LimpiarCampos(){
+        uiTNombre.setText("");
+        uiTCedula.setText("");
+        uiTNumeroTelefono.setText("");
+        uiTCorreo.setText("");
+        uiTADireccion.setText("");
+        uiTCantidad.setText("");
+        if(jRadioButton2.isSelected()){
+            jRadioButton2.setSelected(false);
+        }else if(jRadioButton1.isSelected()){
+            jRadioButton1.setSelected(false);
+        }else if(jRadioButton3.isSelected()){
+            jRadioButton3.setSelected(false);
+        }else if(jRadioButton4.isSelected()){
+            jRadioButton4.setSelected(false);
+        }
+        if(uiCFacturaSi.isSelected()){
+            uiCFacturaSi.setSelected(false);
+        }else if(uiCFacturaNo.isSelected()){
+            uiCFacturaNo.setSelected(false);
+        }
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -417,6 +440,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
+        JOptionPane.showMessageDialog(null, "Gracias por su compra! \n Proceda a ver su factura en la pestaña: Factura");
         nombre = uiTNombre.getText();
         cedula = uiTCedula.getText();
         correo = uiTCorreo.getText();
@@ -503,10 +527,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     Orden orden = new Orden(nombre, cedula, correo, sabor, tamaño, cantidad, total);
     ordenes.add(orden);
     String datos = "";
-    for(Orden p: ordenes){
-       datos = datos + p.toString() + "\n";
-    }
-        System.out.println(datos);
+   LimpiarCampos();
     
     
     
