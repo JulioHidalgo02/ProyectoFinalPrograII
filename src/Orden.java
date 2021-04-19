@@ -10,6 +10,10 @@ String tamaño;
 int cantidad;
 int monto;
 
+
+    public Orden (){
+        
+    }
     public Orden(String nombre, String cedula, String correo, String sabor, String tamaño, int cantidad, int monto) {
         this.nombre = nombre;
         this.cedula = cedula;

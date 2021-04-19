@@ -1,6 +1,7 @@
 
 import java.util.LinkedList;
 import javax.swing.*;
+import sun.misc.PerformanceLogger;
 
 public class PaginaPrincipal extends javax.swing.JFrame {
     public static LinkedList<Orden> ordenes = new LinkedList();
@@ -53,6 +54,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             uiCFacturaNo.setSelected(false);
         }
    }
+      
+      private boolean comprobacionNumerica(String text){
+          try {
+              int num = Integer.parseInt(text);
+              return true;
+          } catch (NumberFormatException e){
+              return false;
+          }
+      }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -441,10 +451,20 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void uiBFinalizarComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBFinalizarComprarActionPerformed
-        JOptionPane.showMessageDialog(null, "Gracias por su compra! \n Proceda a ver su factura en la pestaña: Factura");
+        
         nombre = uiTNombre.getText();
         cedula = uiTCedula.getText();
         correo = uiTCorreo.getText();
+        
+        perfomance: {
+        boolean bCedula = comprobacionNumerica(uiTCedula.getText());
+        boolean bTelefono = comprobacionNumerica(uiTNumeroTelefono.getText());
+        if (bTelefono && bCedula) {
+            JOptionPane.showMessageDialog(null, "Gracias por su compra! \n Proceda a ver su factura en la pestaña: Factura");
+        }else{
+            JOptionPane.showMessageDialog(null, "Datos incorrectos, verifique el numero telefonico o el numero de cedula");
+            break perfomance;
+        }
         
         
         uiTAFactura.append("                    PIZZA FIDE \nDetalle de Compra: \nNombre:" + uiTNombre.getText() + "\n" + "celular: " + uiTNumeroTelefono.getText() + "\n");
@@ -529,12 +549,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     ordenes.add(orden);
     String datos = "";
     LimpiarCampos();
+        }
     
     
     
     }
     private void uiBMenuAdministrador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uiBMenuAdministrador1ActionPerformed
-        MenuAdministrador m = new MenuAdministrador();
+        MenuAdministrador m = new MenuAdministrador(ordenes);
         m.setVisible(true);
 
     }//GEN-LAST:event_uiBMenuAdministrador1ActionPerformed
