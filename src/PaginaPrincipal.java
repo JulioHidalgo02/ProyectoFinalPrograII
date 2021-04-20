@@ -1,7 +1,7 @@
 
 import java.util.LinkedList;
 import javax.swing.*;
-import sun.misc.PerformanceLogger;
+
 
 public class PaginaPrincipal extends javax.swing.JFrame {
     public static LinkedList<Orden> ordenes = new LinkedList();
